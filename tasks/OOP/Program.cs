@@ -9,6 +9,33 @@ namespace OOP
 {
     public class Program
     {
+        public class Product
+        {
+            private string _name { get; set; }
+            private string _manufacturer { get; set; }
+            private double _cost { get; set; }
+            private double _expirationDate { get; set; }
+            private DateTime _productionDate { get; set; }
+
+            public Product(string name, string manufacturer, double cost, double expirationDate, DateTime productionDate)
+            {
+                _name = name;
+                _manufacturer = manufacturer;
+                _cost = cost;
+                _expirationDate = expirationDate;
+                _productionDate = productionDate;
+            }
+
+            public override string ToString()
+            {
+                return "Название: " + _name + "\n" +
+                    "Производитель: " + _manufacturer + "\n" +
+                    "Цена: " + _cost + " руб.\n" +
+                    "Срок годности: " + _expirationDate + " мес.\n" +
+                    "Дата производства: " + _productionDate.ToShortDateString() + "\n";
+            }
+        }
+
         static void Main(string[] args)
         {
             bool correctInput = false;
@@ -23,7 +50,7 @@ namespace OOP
 
             while (!correctInput)
             {
-                Console.Write("Введите цену в рублях: ");
+                Console.Write("Введите цену в рублях (используйте запятую для нецелого числа): ");
                 try
                 {
                     cost = double.Parse(Console.ReadLine());
@@ -69,8 +96,8 @@ namespace OOP
             correctInput = false;
             while (!correctInput)
             {
-                Console.Write("Введите дату в формате DD:MM:YYYY, для записи используйте только целые числа и знак \":\": ");
-                string[] dateValues = Console.ReadLine().Split(':');
+                Console.Write("Введите дату в формате DD.MM.YYYY, для записи используйте только целые числа и знак \".\": ");
+                string[] dateValues = Console.ReadLine().Split('.');
 
                 try
                 {
@@ -83,7 +110,7 @@ namespace OOP
                 }
                 catch (IndexOutOfRangeException e)
                 {
-                    Console.WriteLine("Некорректная запись даты! Перед ");
+                    Console.WriteLine("Некорректная запись даты! Используйте символ \".\" для разделения величин.");
                 }
                 catch (FormatException e)
                 {
@@ -91,7 +118,7 @@ namespace OOP
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
-                    Console.WriteLine("Будущая дата производства недопустима!");
+                    Console.WriteLine("Введенная дата производства недопустима!");
                 }
             }
             Console.WriteLine();
@@ -99,32 +126,5 @@ namespace OOP
             Product product1 = new Product(name, manufacturer, cost, expirationDate, productionDate);
             Console.Write(product1.ToString());
         } 
-    }
-
-    public class Product
-    {
-        private string _name { get; set; }
-        private string _manufacturer { get; set; }
-        private double _cost { get; set; }
-        private double _expirationDate { get; set; }
-        private DateTime _productionDate { get; set; }
-
-        public Product(string name, string manufacturer, double cost, double expirationDate, DateTime productionDate)
-        {
-            _name = name;
-            _manufacturer = manufacturer;
-            _cost = cost;
-            _expirationDate = expirationDate;
-            _productionDate = productionDate;
-        }
-
-        public override string ToString()
-        {
-            return "Название: " + _name + "\n" + 
-                "Производитель: " + _manufacturer + "\n" + 
-                "Цена: " + _cost + " руб.\n" +
-                "Срок годности: " + _expirationDate + " месяцев\n" + 
-                "Дата производства: " + _productionDate.ToShortDateString() + "\n";
-        }
     }
 }
