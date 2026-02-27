@@ -1,0 +1,8 @@
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\bin\Debug\OOP.exe.config
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\bin\Debug\OOP.exe
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\bin\Debug\OOP.pdb
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\obj\Debug\OOP.csproj.AssemblyReference.cache
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\obj\Debug\OOP.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\obj\Debug\OOP.exe
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\obj\Debug\OOP.pdb
+C:\Users\Acer\Desktop\на флешку\6 семестр\практика\tasks\OOP\obj\Debug\OOP.exe.config
