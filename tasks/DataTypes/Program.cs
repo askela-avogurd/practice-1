@@ -13,7 +13,7 @@ namespace DataTypes
             Console.Write(CreateDiamond(21));
         }
 
-        // Task2
+        // Задание 2
         static string CreateDiamond(int n)
         {
             int half = (int)n / 2 + 1;
@@ -34,12 +34,14 @@ namespace DataTypes
                 if (i != half - 1)
                     lowerHalf.Insert(0, singleLine);
             }
+            // Удаляется последний перенос строки
             lowerHalf.Remove(lowerHalf.Length - 1, 1);
 
+            // Возвращается строка из двух половинок ромба
             return upperHalf.ToString() + lowerHalf.ToString();
         }
 
-        // Task1
+        // Задание 1
         static string GetStringOfCalculations(double initial_deposit, int years, double interest_rate)
         {
             double proportion = interest_rate / 100;
