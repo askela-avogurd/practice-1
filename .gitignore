@@ -1,0 +1,12 @@
+*.o
+*.out
+*.exe
+.env
+*.log
+*.tmp
+coverage/
+config/credentials.json
+build/
+dist/
+target/
+bin/
