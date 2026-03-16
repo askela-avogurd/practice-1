@@ -127,4 +127,4 @@ namespace OOP
             Console.Write(product1.ToString());
         } 
     }
-}
+} 
