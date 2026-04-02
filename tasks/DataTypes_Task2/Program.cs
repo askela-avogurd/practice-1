@@ -10,13 +10,17 @@ namespace DataTypes_Task2
     {
         static void Main(string[] args)
         {
-            Console.Write(CreateDiamond(21));
+            Console.Write(GetDiamondString(21));
         }
-
-        // Задание 2
-        static string CreateDiamond(int n)
+        /// <summary>
+        /// Генерирует строку, принимающую форму ромба.
+        /// </summary>
+        /// <remarks>
+        /// Генерирует верхнюю и нижнюю половины построчно и возвращает их склейку.
+        /// </remarks>
+        static string GetDiamondString(int n)
         {
-            int half = (int)n / 2 + 1;
+            var half = (int)n / 2 + 1;
 
             StringBuilder upperHalf = new StringBuilder();
             StringBuilder lowerHalf = new StringBuilder();
@@ -26,18 +30,20 @@ namespace DataTypes_Task2
                 StringBuilder halfLine = new StringBuilder();
                 for (int j = 1; j < half; j++)
                 {
-                    halfLine.Append((i + j == half) ? 'X' : ' ');
+                    halfLine.Append((i + j == half)
+                        ? 'X'
+                        : ' '
+                    );
                 }
-                string reversedHalf = new string(halfLine.ToString().Reverse().ToArray());
+                var reversedHalf = new string(halfLine.ToString().Reverse().ToArray());
                 StringBuilder singleLine = new StringBuilder($"{halfLine}{reversedHalf.ToString().Substring(1)}\n");
                 upperHalf.Append(singleLine);
                 if (i != half - 1)
                     lowerHalf.Insert(0, singleLine);
             }
-            // Удаляется последний перенос строки
+
             lowerHalf.Remove(lowerHalf.Length - 1, 1);
 
-            // Возвращается строка из двух половинок ромба
             return upperHalf.ToString() + lowerHalf.ToString();
         }
     }

@@ -6,24 +6,57 @@ using System.Threading.Tasks;
 
 namespace DataTypes_Task1
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            var initial_deposit = decimal.Parse(GetStringFromConsole("Введите начальный вклад (положительное число): "));
+            var years = int.Parse(GetStringFromConsole("Введите количество лет (положительное целое число): "));
+            var interest_rate = decimal.Parse(GetStringFromConsole("Введите годовую процентную ставку (положительное число): "));
+
+            Console.WriteLine(GetStringOfCalculations(initial_deposit, years, interest_rate));
         }
-        // Задание 1
-        static string GetStringOfCalculations(double initial_deposit, int years, double interest_rate)
+
+        /// <summary>
+        /// Выводит список накоплений на экран.
+        /// </summary>
+        static string GetStringOfCalculations(decimal initial_deposit, int years, decimal interest_rate)
         {
-            double proportion = interest_rate / 100;
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-us");
+            var sums = new List<decimal>(GetAccumulatedSumsList(initial_deposit, years, interest_rate));
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < years; i++)
             {
-                initial_deposit += initial_deposit * proportion;
-                string changed_deposit = String.Format("{0:0.00}", initial_deposit);
-                result.Append($"Год {i + 1}: {changed_deposit} руб.\n");
+                result.Append($"Год {i + 1}: {Decimal.Round(sums[i], 2)} руб.\n");
             }
 
             return result.ToString();
+        }
+
+        /// <summary>
+        /// Формирует список накоплений.
+        /// </summary>
+        static IEnumerable<decimal> GetAccumulatedSumsList(decimal initial_deposit, int years, decimal interest_rate)
+        {
+            const decimal MaxPercent = 100;
+            decimal proportion = interest_rate / MaxPercent;
+            for (int i = 0; i < years; i++)
+            {
+                initial_deposit += initial_deposit * proportion;
+                yield return initial_deposit;
+            }
+        }
+
+        /// <summary>
+        /// Реализует интерактив.
+        /// </summary>
+        /// <remarks>
+        /// Выводит сообщение и считывает строку для преобразования потом в нужный тип данных.
+        /// </remarks>
+        static string GetStringFromConsole(string message)
+        {
+            Console.Write(message);
+            return Console.ReadLine();
         }
     }
 }
