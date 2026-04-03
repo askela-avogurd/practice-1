@@ -23,11 +23,11 @@ namespace DataTypesTask1
             }
             catch (FormatException ex)
             {
-                Console.WriteLine($"Ошибка ввода числа.\n{ex.Message}");
+                Console.WriteLine($"Ошибка ввода числа. {ex.Message}");
             }
             catch (OverflowException ex)
             {
-                Console.WriteLine($"Ошибка ввода неотрицательного числа.\n{ex.Message}");
+                Console.WriteLine($"Ошибка ввода неотрицательного числа. {ex.Message}");
             }
             catch (ArgumentException ex)
             {
@@ -59,13 +59,14 @@ namespace DataTypesTask1
         /// <returns>Словарь, где ключ - год, значение - сумма накоплений.</returns>
         public static Dictionary<uint, decimal> GetCalculationsDictionary(decimal initialDeposit, uint years, decimal interestRate)
         {
+            // Все параметры должны быть положительные
             decimal lowerLimit = 1;
 
             CheckNumber(initialDeposit, lowerLimit);
             CheckNumber(years, lowerLimit);
             CheckNumber(interestRate, lowerLimit);
 
-            Dictionary<uint, decimal> result = new Dictionary<uint, decimal>();
+            Dictionary<uint, decimal> result = new Dictionary<uint, decimal>((int)years);
             const decimal MaxPercent = 100;
 
             decimal proportion = interestRate / MaxPercent;
@@ -88,7 +89,7 @@ namespace DataTypesTask1
         public static void CheckNumber(decimal number, decimal lowerLimit)
         {
             if (number < lowerLimit)
-                throw new ArgumentException($"\nОжидался ввод неотрицательного числа. Получено: {number}.");
+                throw new ArgumentException("Ожидался ввод неотрицательного числа.", nameof(number));
         }
 
         /// <summary>
