@@ -9,33 +9,6 @@ namespace OOP
 {
     public class Program
     {
-        public class Product
-        {
-            private string _name { get; set; }
-            private string _manufacturer { get; set; }
-            private double _cost { get; set; }
-            private double _expirationDate { get; set; }
-            private DateTime _productionDate { get; set; }
-
-            public Product(string name, string manufacturer, double cost, double expirationDate, DateTime productionDate)
-            {
-                _name = name;
-                _manufacturer = manufacturer;
-                _cost = cost;
-                _expirationDate = expirationDate;
-                _productionDate = productionDate;
-            }
-
-            public override string ToString()
-            {
-                return "Название: " + _name + "\n" +
-                    "Производитель: " + _manufacturer + "\n" +
-                    "Цена: " + _cost + " руб.\n" +
-                    "Срок годности: " + _expirationDate + " мес.\n" +
-                    "Дата производства: " + _productionDate.ToShortDateString() + "\n";
-            }
-        }
-
         static void Main(string[] args)
         {
             bool correctInput = false;
